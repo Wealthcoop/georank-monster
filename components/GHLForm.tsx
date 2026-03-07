@@ -12,30 +12,19 @@ export default function GHLForm({ formId, city, service }: GHLFormProps) {
   const params = new URLSearchParams();
   if (city) params.append('city', city);
   if (service) params.append('service', service);
-  
+
   const finalUrl = `${baseUrl}?${params.toString()}`;
 
   return (
-    <div className=\"w-full overflow-hidden rounded-xl border bg-white shadow-sm\">
+    <div className="w-full overflow-hidden rounded-xl border bg-white shadow-sm" style={{ minHeight: '600px' }}>
       <iframe
         src={finalUrl}
-        style={{ width: '100%', height: '100%', border: 'none' }}
+        style={{ width: '100%', height: '600px', border: 'none' }}
         id={`inline-${formId}`}
-        data-layout=\"{'id':'INLINE'}\"
-        data-trigger-type=\"alwaysShow\"
-        data-trigger-value=\"\"
-        data-activation-type=\"alwaysActivated\"
-        data-activation-value=\"\"
-        data-deactivation-type=\"neverDeactivate\"
-        data-deactivation-value=\"\"
-        data-form-name=\"GeoRank Lead Form\"
-        data-height=\"600\"
-        data-layout-iframe-id={`inline-${formId}`}
-        data-form-id={formId}
-        title=\"GHL Form\"
-        className=\"min-h-[600px]\"
+        data-form-name="GeoRank Lead Form"
+        title="GHL Form"
       />
-      <script src=\"https://link.msgsndr.com/js/form_embed.js\"></script>
+      <script src="https://link.msgsndr.com/js/form_embed.js" async></script>
     </div>
   );
 }
