@@ -29,10 +29,15 @@ export default function OnboardingWizard() {
     primaryColor: '#3b82f6',
   });
 
-  // Persist state to LocalStorage
   useEffect(() => {
     const saved = localStorage.getItem('georank_wizard');
-    if (saved) setFormData(JSON.parse(saved));
+    if (saved) {
+      try {
+        setFormData(JSON.parse(saved));
+      } catch (e) {
+        console.error('Error parsing saved data', e);
+      }
+    }
   }, []);
 
   useEffect(() => {
