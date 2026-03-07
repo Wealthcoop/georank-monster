@@ -1,5 +1,5 @@
 {
-  "name": "georank-monster",
+  "name": "georank-monster",v0.3: Add missing Radix UI dependencies to package.json
   "version": "0.2.0",
   "private": true,
   "scripts": {
