@@ -1,0 +1,41 @@
+'use client';
+
+interface GHLFormProps {
+  formId: string;
+  city?: string;
+  service?: string;
+}
+
+export default function GHLForm({ formId, city, service }: GHLFormProps) {
+  // Construct GHL URL with dynamic custom fields
+  const baseUrl = `https://link.msgsndr.com/widget/form/${formId}`;
+  const params = new URLSearchParams();
+  if (city) params.append('city', city);
+  if (service) params.append('service', service);
+  
+  const finalUrl = `${baseUrl}?${params.toString()}`;
+
+  return (
+    <div className=\"w-full overflow-hidden rounded-xl border bg-white shadow-sm\">
+      <iframe
+        src={finalUrl}
+        style={{ width: '100%', height: '100%', border: 'none' }}
+        id={`inline-${formId}`}
+        data-layout=\"{'id':'INLINE'}\"
+        data-trigger-type=\"alwaysShow\"
+        data-trigger-value=\"\"
+        data-activation-type=\"alwaysActivated\"
+        data-activation-value=\"\"
+        data-deactivation-type=\"neverDeactivate\"
+        data-deactivation-value=\"\"
+        data-form-name=\"GeoRank Lead Form\"
+        data-height=\"600\"
+        data-layout-iframe-id={`inline-${formId}`}
+        data-form-id={formId}
+        title=\"GHL Form\"
+        className=\"min-h-[600px]\"
+      />
+      <script src=\"https://link.msgsndr.com/js/form_embed.js\"></script>
+    </div>
+  );
+}
