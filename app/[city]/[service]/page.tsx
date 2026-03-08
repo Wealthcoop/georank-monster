@@ -52,7 +52,8 @@ export default async function SiloPage({ params }: PageProps) {
         <ul className="flex flex-wrap gap-2">
           {internalLinks.cityLinks.map((link) => (
             <li key={link.href}>
-              <Link href={link.href as `/${string}`} className="text-primary hover:underline">
+              {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
+              <Link href={link.href as any} className="text-primary hover:underline">
                 {link.label}
               </Link>
             </li>
@@ -65,7 +66,8 @@ export default async function SiloPage({ params }: PageProps) {
         <ul className="flex flex-wrap gap-2">
           {internalLinks.serviceLinks.map((link) => (
             <li key={link.href}>
-              <Link href={link.href as `/${string}`} className="text-primary hover:underline">
+              {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
+              <Link href={link.href as any} className="text-primary hover:underline">
                 {link.label}
               </Link>
             </li>
