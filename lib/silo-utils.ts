@@ -5,6 +5,11 @@ export interface SiloLink {
   href: string;
 }
 
+export interface InternalLinks {
+  cityLinks: SiloLink[];
+  serviceLinks: SiloLink[];
+}
+
 /**
  * Generates a clean URL for a city/service silo page
  */
@@ -20,7 +25,7 @@ export function getInternalLinks(
   currentService: string, 
   cities: string[], 
   services: string[]
-): SiloLink[] {
+): InternalLinks {
   // 1. Links to the same service in other cities (city-silo linking)
   const cityLinks = cities
     .filter((c) => c !== currentCity)
@@ -29,7 +34,6 @@ export function getInternalLinks(
       label: `${currentService} in ${c}`,
       href: generateSiloUrl(c, currentService),
     }));
-
   // 2. Links to other services in the same city (service-silo linking)
   const serviceLinks = services
     .filter((s) => s !== currentService)
@@ -37,6 +41,5 @@ export function getInternalLinks(
       label: `${s} in ${currentCity}`,
       href: generateSiloUrl(currentCity, s),
     }));
-
-  return [...cityLinks, ...serviceLinks];
+  return { cityLinks, serviceLinks };
 }
