@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import { GHLForm } from "@/components/GHLForm";
+import GHLForm } fm "@/components/GHLForm";
 import { generateSiloUrl, getInternalLinks } from "@/lib/silo-utils";
 import Link from "next/link";
 
