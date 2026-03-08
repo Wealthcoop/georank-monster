@@ -33,44 +33,45 @@ export default async function SiloPage({ params }: PageProps) {
   const internalLinks = getInternalLinks(decodedCity, decodedService, nearbyCities, otherServices);
 
   return (
-    <div className="container mx-auto px-4 py-12 max-w-4xl">
-      <h1 className="text-4xl font-bold mb-4">
+    <main className="container mx-auto px-4 py-8">
+      <h1 className="text-3xl font-bold mb-4">
         {decodedService} in {decodedCity}
       </h1>
-      <p className="text-lg text-muted-foreground mb-8">
-        Expert {decodedService} services for residents in {decodedCity}. Get a free quote today!
+      <p className="text-lg mb-6">
+        Looking for professional {decodedService} services in {decodedCity}? You've come to the right place.
+        Our expert team provides top-quality {decodedService} solutions tailored to your needs.
       </p>
 
-      <div className="mb-12">
-        <GHLForm formId="your-form-id" city={decodedCity} service={decodedService} />
-      </div>
+      <section className="mb-8">
+        <h2 className="text-2xl font-semibold mb-4">Get a Free Quote</h2>
+        <GHLForm />
+      </section>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
-        <div>
-          <h2 className="text-2xl font-semibold mb-4">Nearby Cities</h2>
-          <ul className="space-y-2">
-            {internalLinks.cityLinks.map((link) => (
-              <li key={link.href}>
-                <Link href={link.href} className="text-primary hover:underline">
-                  {link.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-        <div>
-          <h2 className="text-2xl font-semibold mb-4">Other Services</h2>
-          <ul className="space-y-2">
-            {internalLinks.serviceLinks.map((link) => (
-              <li key={link.href}>
-                <Link href={link.href} className="text-primary hover:underline">
-                  {link.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </div>
-    </div>
+      <section className="mb-8">
+        <h2 className="text-xl font-semibold mb-3">Nearby Cities</h2>
+        <ul className="flex flex-wrap gap-2">
+          {internalLinks.cityLinks.map((link) => (
+            <li key={link.href}>
+              <Link href={link.href as `/${string}`} className="text-primary hover:underline">
+                {link.label}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <section className="mb-8">
+        <h2 className="text-xl font-semibold mb-3">Other Services</h2>
+        <ul className="flex flex-wrap gap-2">
+          {internalLinks.serviceLinks.map((link) => (
+            <li key={link.href}>
+              <Link href={link.href as `/${string}`} className="text-primary hover:underline">
+                {link.label}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </section>
+    </main>
   );
 }
