@@ -1,12 +1,12 @@
 'use client';
 
 interface GHLFormProps {
-  formId: string;
+  formId?: string;
   city?: string;
   service?: string;
 }
 
-export default function GHLForm({ formId, city, service }: GHLFormProps) {
+export default function GHLForm({ formId = 'default', city, service }: GHLFormProps) {
   // Construct GHL URL with dynamic custom fields
   const baseUrl = `https://link.msgsndr.com/widget/form/${formId}`;
   const params = new URLSearchParams();
