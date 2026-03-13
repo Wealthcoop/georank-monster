@@ -64,7 +64,7 @@ export default function OnboardingWizard() {
           {step === 1 && (
             <>
               <div className="space-y-2">
-                <Label htmlFor="businessName">Business Name</Label>v0.3: Fix syntax error in onboarding page (removed escaped quotes)
+                <Label htmlFor="businessName">Business Name</Label>
                 <Input 
                   id="businessName" 
                   value={formData.businessName} 
